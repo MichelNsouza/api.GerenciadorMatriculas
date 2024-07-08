@@ -4,9 +4,7 @@
 O projeto trata-se de uma api que gerencia matriculas de alunos de uma unidade academica XYZ.
 onde é possivel cadastrar alunos e cursos, consultar cursos e alunos ativos e inativos
 
-## Tecnologias Utilizadas
-
-## Back-end
+## Tecnologias Utilizadas no Back-end
 - Laravel: Deploy no vercel
 - MySql: FreeHostia
 
