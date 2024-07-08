@@ -18,7 +18,7 @@ onde é possivel cadastrar alunos e cursos, consultar cursos e alunos ativos e i
     - Axios -  Cliente HTTP 
     - Vite -  Pré-empacotamento de dependência
 
-O código-fonte do backend associado a este projeto pode ser encontrado no seguinte repositório do GitHub: [API gerenciador de matriculas](https://github.com/MichelNsouza/api.GerenciadorMatriculas).
+O código-fonte do Front-end associado a este projeto pode ser encontrado no seguinte repositório do GitHub: [Front-End gerenciador de matriculas](https://github.com/MichelNsouza/front.GerenciadorMatriculas).
 
 ### Imagens
 EM CONSTRUÇÃO
