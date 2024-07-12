@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('alunos', AlunoController::class);
 Route::apiResource('cursos', CursoController::class);
+
+Route::get('/alunos&cursos', [AlunoController::class, 'buscarAlunosComCursos']);
+Route::get('/quantidadealunosporCurso', [AlunoController::class, 'buscarQuantidadeAlunosPorCurso']);
 Route::get('/aluno/{id}/cursos', [AlunoController::class, 'buscarAlunoComCursos']);
 Route::get('/aluno/ativos', [AlunoController::class, 'buscarAlunosAtivos']);
 Route::get('/aluno/status', [AlunoController::class, 'buscarAlunosInativos']);

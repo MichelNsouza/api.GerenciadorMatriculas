@@ -112,7 +112,6 @@ class AlunoController extends Controller
 
     public function buscarAlunoComCursos($id)
     {
-        // Buscar o aluno pelo ID e carregar os cursos relacionados
         $aluno = Aluno::with('cursos')->find($id);
 
         if (!$aluno) {
@@ -122,6 +121,26 @@ class AlunoController extends Controller
         }
 
         return response()->json($aluno);
+    }
+    public function buscarAlunosComCursos()
+    {
+
+        $alunos = Aluno::with('cursos')->get();
+
+        return response()->json($alunos);
+    }
+    public function buscarQuantidadeAlunosPorCurso()
+    {
+        $cursos = Curso::withCount('alunos')->get();
+
+        $result = $cursos->map(function($curso) {
+            return [
+                'curso' => $curso->nome,
+                'quantidade_alunos' => $curso->alunos_count
+            ];
+        });
+
+        return response()->json($result);
     }
 
     public function buscarAlunosInativos()
