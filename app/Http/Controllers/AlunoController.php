@@ -16,7 +16,8 @@ class AlunoController extends Controller
      */
     public function index()
     {
-        $alunos = Aluno::all();
+        $alunos = Aluno::with('cursos')->get();
+
         $totalAlunos = $alunos->count();
         $totalAtivos = Aluno::where('status', 'ativo')->count();
         $totalInativos = Aluno::where('status', 'inativo')->count();
@@ -110,25 +111,6 @@ class AlunoController extends Controller
         return true;
     }
 
-    public function buscarAlunoComCursos($id)
-    {
-        $aluno = Aluno::with('cursos')->find($id);
-
-        if (!$aluno) {
-            return response()->json([
-                'message' => 'Aluno não encontrado!',
-            ], 404);
-        }
-
-        return response()->json($aluno);
-    }
-    public function buscarAlunosComCursos()
-    {
-
-        $alunos = Aluno::with('cursos')->get();
-
-        return response()->json($alunos);
-    }
     public function buscarQuantidadeAlunosPorCurso()
     {
         $cursos = Curso::withCount('alunos')->get();
@@ -143,23 +125,20 @@ class AlunoController extends Controller
         return response()->json($result);
     }
 
-    public function buscarAlunosInativos()
+    public function desativarAlunoPorRa($ra)
     {
-        $totalInativos = Aluno::where('status', 'inativo')->count();
-        $alunosInativos = Aluno::where('status', 'inativo')->get();
 
-        return response()->json([
-            'total'=>$totalInativos,
-            'alunos'=>$alunosInativos]);
-    }
-    public function buscarAlunosAtivos()
-    {
-        $totalAtivos = Aluno::where('status', 'ativo')->count();
-        $alunosAtivos = Aluno::where('status', 'ativo')->get();
+        $aluno = Aluno::where('registroDoAluno', $ra)->first();
 
-        return response()->json([
-            'total'=>$totalAtivos,
-            'alunos'=>$alunosAtivos]);
+        if (!$aluno) {
+            return response()->json(['error' => 'Aluno não encontrado'], 404);
+        }
+
+        $aluno->status = 'inativo';
+        $aluno->save();
+
+        return response()->json(['success' => 'Aluno desativado com sucesso'], 200);
     }
+
 
 }
