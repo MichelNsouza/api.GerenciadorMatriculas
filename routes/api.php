@@ -15,3 +15,5 @@ Route::apiResource('cursos', CursoController::class);
 
 Route::get('/quantidadealunosporCurso', [AlunoController::class, 'buscarQuantidadeAlunosPorCurso']);
 Route::post('/aluno/desativar/{ra}', [AlunoController::class, 'desativarAlunoPorRa']);
+Route::post('/aluno/ativar/{ra}', [AlunoController::class, 'ativarAlunoPorRa']);
+

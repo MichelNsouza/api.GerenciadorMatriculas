@@ -139,6 +139,20 @@ class AlunoController extends Controller
 
         return response()->json(['success' => 'Aluno desativado com sucesso'], 200);
     }
+    public function ativarAlunoPorRa($ra)
+    {
+
+        $aluno = Aluno::where('registroDoAluno', $ra)->first();
+
+        if (!$aluno) {
+            return response()->json(['error' => 'Aluno não encontrado'], 404);
+        }
+
+        $aluno->status = 'ativo';
+        $aluno->save();
+
+        return response()->json(['success' => 'Aluno ativado com sucesso'], 200);
+    }
 
 
 }
