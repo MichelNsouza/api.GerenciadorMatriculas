@@ -14,12 +14,21 @@ class CursoController extends Controller
      */
     public function index()
     {
-        $cursos = Curso::all();
+        $cursos = Curso::withCount('alunos')->get();
+
         return response()->json([
-            'status'=>true,
-            'cursos'=>$cursos
+            'status' => true,
+            'cursos' => $cursos->map(function($curso) {
+                return [
+                    'id' => $curso->id,
+                    'nome' => $curso->nome,
+                    'descricao' => $curso->descricao,
+                    'alunos_count' => $curso->alunos_count,
+                ];
+            })
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
