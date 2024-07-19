@@ -14,7 +14,9 @@ class CursoController extends Controller
      */
     public function index()
     {
-        $cursos = Curso::withCount('alunos')->get();
+        $cursos = Curso::withCount(['alunos' => function ($query) {
+            $query->where('status', 'ativo');
+        }])->get();
 
         return response()->json([
             'status' => true,
