@@ -8,7 +8,7 @@ onde é possivel cadastrar alunos e cursos, consultar cursos e alunos ativos e i
 - Laravel: Deploy no vercel
 - MySql: FreeHostia
 
-### Esta é uma API RESTful e no momento, não há autenticação via token, portanto, você pode realizar as requisições diretamente para os seguintes endpoints:
+Esta é uma API RESTful e no momento, não há autenticação via token, portanto, você pode realizar as requisições diretamente para os seguintes endpoints:
 
 **Base URL:** `https://api-gerenciador-matriculas.vercel.app/api/api/alunos`  
 **Base URL:** `https://api-gerenciador-matriculas.vercel.app/api/api/cursos`  
